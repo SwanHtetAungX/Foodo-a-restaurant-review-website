@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FooDo🍔</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&display=swap" rel="stylesheet"> 
+    <script src="./js/checkToken.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/loadUserDetails.js"></script>
+    <script src="./js/fnbitems.js"></script>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <nav>
+        <div class="logo"><a href="index.html"><img id="logo-img" src="images/logo.png" alt="foodo"></a></div>
+        <ul class="nav-link">
+            <li class="active"><a  href="index.html">Home</a></li>
+            <li><a href="menu-food.html">Menu<i class="fa fa-angle-down" aria-hidden="true" style="font-size: 15px;padding-left: 6px;"></i></a>
+            <ul class="dropdown">
+                <li><a href="menu-food.html">Food</a></li>
+                <li><a href="menu-drink.html">Drink</a></li>
+                <li><a href="menu-dessert.html">Desserts</a></li>
+            </ul>
+            </li>
+            <li><a href="restaurant.html">Restaurant<i class="fa fa-angle-down" aria-hidden="true" style="font-size: 15px;padding-left: 6px;"></i></a>
+            <ul class="dropdown">
+                <li><a href="http://127.0.0.2:8080/restaurant.html#all-restaurants">All Restaurants</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#western">Western</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#asian">Asian</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#fast-food">Fast Food</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#Cafe">Cafe</a></li>
+                <li><a href="#">Upload</a></li>
+            </ul>
+            </li>
+            <li><a href="#about">About Us</a></li>
+        </ul>
+        
+        <div class="icons">
+            <a href="search.html"><div id="search-btn" class="fas fa-search" style="margin-right: 20px;">
+            </div></a>
+            <div id="login-btn" class="fas fa-user"><ul id="account" >
+                <li id="myaccount-button"><a href="myaccount.html" >MyAccount</a></li>
+                <li id="favourite-button" onclick="displayFavFnb()"><a href="favourite.html" >Favourite</a></li>
+                <li id="login-button"><a href="login.html">Login</a></li>
+                <li id="sign-up-button"><a href="sign-up.html">Register</a></li>
+                <li id="logout-button"><a href="#" onclick="logOut()">Logout</a></li>
+            </ul></div>
+        </div>
+        
+    </nav>
+    <div class="content">
+        <img src="images/graphic.png" alt="" style="width:350px;position: absolute;left: 350px;top:470px;z-index: 1;">
+        <img class="floating-element" src="images/sushirow.png" alt="" style="width: 250px;position: absolute; right: 150px;top: 125px;">
+        <img class="floating-element" src="images/sushi.png" alt="" style="width: 250px;position: absolute; right: 400px;top: 400px;">
+        <h1 style="color:#F8B525;margin-top: 240px;margin-left: 100px;font-family:'Lora',serif;font-size: 40px;">All the delicious food are here <img src="images/sushi-3.png" alt="" style="width:50px;"></h1>
+        <p style="color:#F8B525 ;font-family: 'Poppins',sans-serif;margin-top:20px ;margin-left:100px;">Discover the best food and restaurant in Singapore <br>with honest and unbiased reviews</p>
+        <img src="images/line.png" alt="" style="width: 170px;position:absolute;left: 200px;">
+        <div id="about" >
+            <h4>About Us</h4>
+            <div style="display: flex;justify-content: space-between;">
+                <p>Our mission is to help users to decide which restaurant <br>is the best option they could choose  based on  reviews and ratings <br>with aesthetically  pleasing user interface and with the ease of use.</p>
+                <img src="images/about.png" alt="" style="width: 200px;margin-right: 50px;margin-bottom: 100px;">
+            </div>
+            
+        </div>
+        <div><p style="position: absolute;top: 2000px;left:400px;background: none;font-family: 'Poppins',sans-serif;letter-spacing: 4px;">Give Credits to all owners of the images used in this project <br><br>Copyright©SwanHtetAung </p></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#F8B525" fill-opacity="1" d="M0,160L80,138.7C160,117,320,75,480,80C640,85,800,139,960,149.3C1120,160,1280,128,1360,112L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+       
+        <!--<div class="go-to-menu"><h2 style="color: white;text-align: center;">Menu</h2></div>-->
+    </div>
+    
+    
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="./js/app.js"></script>
+    <script src="./js/fnbitems-drinks.js"></script>
+    <script src="./js/fnb-reviews.js"></script>
+    <script src="./js/userinfo.js"></script>
+    <script src="./js/checkToken.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/loadUserDetails.js"></script>
+</head>
+<body onload="getFnbItemsDrink()">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <nav>
+        <div class="logo"><a href="index.html"><img id="logo-img" src="images/logo.png" alt="foodo"></a></div>
+        <ul class="nav-link">
+            <li><a  href="index.html">Home</a></li>
+            <li class="active"><a href="menu-food.html">Menu<i class="fa fa-angle-down" aria-hidden="true" style="font-size: 15px;padding-left: 6px;"></i></a>
+            <ul class="dropdown">
+                <li><a href="menu-food.html">Food</a></li>
+                <li><a href="menu-drink.html">Drink</a></li>
+                <li><a href="menu-dessert.html">Desserts</a></li>
+            </ul>
+            </li>
+            <li><a href="restaurant.html">Restaurant<i class="fa fa-angle-down" aria-hidden="true" style="font-size: 15px;padding-left: 6px;"></i></a>
+            <ul class="dropdown">
+                <li><a href="http://127.0.0.2:8080/restaurant.html#all-restaurants">All Restaurants</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#western">Western</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#asian">Asian</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#fast-food">Fast Food</a></li>
+                <li><a href="http://127.0.0.2:8080/restaurant.html#Cafe">Cafe</a></li>
+            
+                <li><a href="#">Upload</a></li>
+            </ul>
+            </li>
+            <li><a href="http://127.0.0.2:8080/#about">About Us</a></li>
+        </ul>
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search" style="margin-right: 20px;"></div>
+            <div id="login-btn" class="fas fa-user"><ul id="account" >
+                <li id="myaccount-button"><a href="myaccount.html">MyAccount</a></li>
+                <li id="favourite-button"><a href="favourite.html" >Favourite</a></li>
+                <li id="login-button"><a href="login.html" >Login</a></li>
+                <li id="sign-up-button"><a href="sign-up.html" >Register</a></li>
+                <li id="logout-button"><a href="#"  onclick="logOut()">Logout</a></li>
+            </ul></div>
+        </div> 
+    </nav>
+   <div class="menu-content">
+        <div id="hot-drink"><h4>Hot drink</h4>
+            <div class="side-menu" style="position: fixed;">
+                <div class="button-active"><a href="#hot-drink" style="color: black;">Hot Drink<img  style="width: 40px;background-color:#F8B525;" src="images/starbuckcaffemocha.png" alt=""></a></div>
+                <div class="button"><a href="#cold-drink" style="color: black;">Cold Drink<img  style="width: 40px;background-color:#F8B525;" src="images/cocacola.png" alt=""></a></div>
+            </div>
+            <div class="container">
+                <div id="hot-drink-table" class="row"></div>
+            </div>
+        </div>
+        <div id="cold-drink" style="margin-top: 300px;"><h4>Cold Drink</h4>
+            <div class="container">
+                <div id="cold-drink-table" class="row"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade"  id="fnbitems-modal-1" tabindex="-1" role="dialog" style="z-index: 100000;" >
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="border: solid 2px #F8B525;">
+        <div class="modal-header" style="display: flex;justify-content: center;">
+        <h3 class="modal-title text-light" id="itemName">Modal title</h3>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="mr-2" id="v-review-btn" data-toggle="modal" data-target="#comment-food-Modal"
+                data-dismiss="modal" onClick="showFoodComments()"><h5 style="font-size:15px;color: white;padding:0px 5px 0px 5px;font-family: 'Poppins',sans-serif;margin:0;">View Reviews</h5></button>
+                <button type="button" id="favourite-btn"><h5 style="font-size:15px;color: white;padding:2px 5px 0px 5px;font-family: 'Poppins',sans-serif;">Add to Favourite</h5></button>
+            </div>
+            
+            <div class="center-image" style="display: flex;justify-content: center;align-items: center;">
+                <img alt="" style="width: 20%;" id="itemPhoto">
+            </div>
+            <h5 class="header-content">Type</h5>
+            <p class="item-content" id="type"></p>
+            <br>
+            <h5 class="header-content">Restaurant</h5>
+            <p class="item-content" id="restaurant">Mc Donald's</p>
+            <br>
+            <h5 class="header-content">Price</h5>
+            <p class="item-content" id="price">$3.5</p>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="modal fade" id="comment-food-Modal-2" tabindex="-1" role="dialog" style="z-index: 100000;font-family: 'Poppins',sans-serif;">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border: solid 2px #F8B525;">
+            <div class="modal-header text-center" >
+            <h5 class="modal-title text-light" id="review">Review</h5>
+            <button type="button" class="btn btn-warning" id="newCommentDrink" data-toggle="modal" data-target="#newFNBCommentModal-1"
+            data-dismiss="modal" onClick="newComment()">New Review</button>
+            </div>
+            <div class="modal-body" >
+            <div id="emptyComment" style="color: white;">No review yet. Create one now</div>
+            <br><br>
+            <div class="row px-5" id="commentBody" style="color: white;"></div>
+            <div class="modal-footer" style="border: none;">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <script>
+            var token = sessionStorage.getItem("token");
+            if (token == null) {
+                document.getElementById('newCommentDrink').style.display="none";
+            }
+        </script>
+        <div class="modal fade" id="newFNBCommentModal-1" tabindex="-1" role="dialog" style="z-index: 100000;">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border: solid 2px #F8B525;font-family:'Poppins',sans-serif ;color: white;">
+            <div class="modal-header  text-center">
+            <h3 class="modal-title text-light">Contribute a Review</h3>
+            <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body px-5">
+            <!-- All input to be sent to server, and buttons must be within the 'form' tag -->
+            <form id="commentForm">
+            <div class="row" text-center id="commentBody">
+            <label for="name">Name</label>
+            <input type="text" id="nickname" class="form-control" required>
+            <label for="userComments">Review</label>
+            <textarea id="userComments" required class="form-control form-rounded" rows="3" cols="100%"></textarea>
+            <label for="popcorn" style="padding-right:20px;margin-top: 20px;">Rating</label>
+            <img src="images/star_bw.png" class="pop" value="1" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="pop" value="2" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="pop" value="3" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="pop" value="4" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="pop" value="5" onmouseover="rateIt(this)" />
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal" id="submitComment" onClick="addComment()">Submit</button>
+            <button type="button" class="btn btn-secondary bg-dark" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog" style="z-index:100000;">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border: solid 2px #F8B525 ;font-family: 'Poppins',sans-serif;color: white;">
+            <div class="modal-header  text-center">
+            <h3 class="modal-title text-light">Edit a Review</h3>
+            <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+            </button>
+            </div>
+            <div class="modal-body px-5">
+            <form id="commentForm">
+            <div class="row" text-center id="editcommentBody">
+            <label for="nickname">Nickname</label>
+            <input type="text" id="editnickname" class="form-control" required>
+            <label for="userComments">Review</label>
+            <textarea id="edituserComments" required class="form-control form-rounded" rows="3" cols="100%"></textarea>
+            <label for="star" style="padding-right:20px;margin-top: 20px;">Rating</label>
+            <img src="images/star_bw.png" class="editpop" value="1" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="editpop" value="2" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="editpop" value="3" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="editpop" value="4" onmouseover="rateIt(this)" />
+            <img src="images/star_bw.png" class="editpop" value="5" onmouseover="rateIt(this)" />
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="submitComment" onClick="updateComment()">Submit</button>
+            <button type="button" class="btn btn-secondary bg-dark" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+            </div>
+            </div>
+            </div>
+            </div>
+      
+    
+  
+
+   
+    
+
+    
+</body>
+</html>
